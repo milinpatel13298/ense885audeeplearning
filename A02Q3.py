@@ -13,6 +13,7 @@ import math
 def stochasticGradientDescent(X_train, Y_train_new, alpha):
 	w=numpy.zeros((10,784))
 	bias=numpy.zeros(10)
+	print("Starting processing each image one by one")
 	for i in range(len(X_train)):
 		y_predicted=softMax(numpy.dot(w,X_train[i])+bias)
 		loss_gradient=y_predicted-Y_train_new[i]
