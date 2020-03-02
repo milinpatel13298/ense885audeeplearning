@@ -31,7 +31,7 @@ def stochasticGradientDescent(X_train, Y_train_new, alpha,penalty):
 			print("Completed processing 50000 images")
 		if i==59999:
 			print("Completed processing 60000 images")
-	return w
+	return w,bias
 
 def softMax(list):
 	sum=0
@@ -68,14 +68,14 @@ y_test_new=convert(y_test)
 X_train = X_train / 255
 x_test = x_test / 255
 
-learned_weights=numpy.zeros((10,784))
-learned_weights=stochasticGradientDescent(X_train,Y_train_new,alpha=0.1,penalty=0.001)
+#learned_weights=numpy.zeros((10,784))
+learned_weights,learned_bias=stochasticGradientDescent(X_train,Y_train_new,alpha=0.1,penalty=0.001)
 print(learned_weights)
 print(learned_weights.shape)
 success=0
 confusion_matrix=[[0 for _ in range(10)] for _ in range(10)]
 for i in range(len(x_test)):
-	y_predicted=numpy.argmax(softMax(numpy.dot(learned_weights,x_test[i])))
+	y_predicted=numpy.argmax(softMax(numpy.dot(learned_weights,x_test[i])+learned_bias))
 	confusion_matrix[y_test[i]][y_predicted]+=1
 	if y_predicted==y_test[i]:
 		success+=1
