@@ -5,6 +5,13 @@ import numpy
 from tensorflow.contrib.learn.python.learn.datasets.mnist import extract_images, extract_labels
 import math	
 
+def convert(x):		#converts the label datasets into one-hot encoded format
+    y=numpy.zeros([len(x),10])
+    z=numpy.eye(10)
+    for i in range(len(x)):
+        y[i]=(z[(x[i])])
+    return y
+
 def softMax(list):
 	sum=0
 	for i in range(len(list)):
@@ -35,14 +42,6 @@ def stochasticGradientDescent(X_train, Y_train_new, alpha):
 		if i==59999:
 			print("Completed processing 60000 images")
 	return w,bias
-
-def convert(x):		#converts the label dataset into one-hot encoded format
-    y=numpy.zeros([len(x),10])
-    z=numpy.eye(10)
-    for i in range(len(x)):
-        y[i]=(z[(x[i])])
-    return y
-
 
 with open('train-images-idx3-ubyte.gz', 'rb') as f:
 	X_train = extract_images(f)
