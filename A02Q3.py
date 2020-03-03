@@ -1,6 +1,5 @@
 IMG_SIZE=28
 
-
 import tensorflow
 import numpy
 from tensorflow.contrib.learn.python.learn.datasets.mnist import extract_images, extract_labels
