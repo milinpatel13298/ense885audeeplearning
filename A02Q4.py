@@ -12,6 +12,14 @@ def convert(x):			#converts the label datasets into one-hot encoded format
         y[i]=(z[(x[i])])
     return y
 
+def softMax(list):
+	sum=0
+	for i in range(len(list)):
+		sum+=math.exp(list[i])
+	for i in range(len(list)):
+		list[i]=math.exp(list[i])/sum
+	return list
+
 def stochasticGradientDescent(X_train, Y_train_new, alpha,penalty):
 	w=numpy.zeros((10,784))
 	bias=numpy.zeros(10)
@@ -34,14 +42,6 @@ def stochasticGradientDescent(X_train, Y_train_new, alpha,penalty):
 		if i==59999:
 			print("Completed processing 60000 images")
 	return w,bias
-
-def softMax(list):
-	sum=0
-	for i in range(len(list)):
-		sum+=math.exp(list[i])
-	for i in range(len(list)):
-		list[i]=math.exp(list[i])/sum
-	return list
 
 with open('train-images-idx3-ubyte.gz', 'rb') as f:
 	X_train = extract_images(f)
