@@ -31,7 +31,7 @@ test_images=test_images.reshape((test_images.shape[0],IMG_SIZE*IMG_SIZE)).astype
 #normalizing the image intensity values
 train_images = train_images / 255.0
 test_images = test_images / 255.0
-#convertign the labels into one-hot encoded form
+#converting the labels into one-hot encoded form
 test_labels_new=convert(test_labels)
 train_labels_new=convert(train_labels)
 
