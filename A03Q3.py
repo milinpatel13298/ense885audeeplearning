@@ -55,7 +55,8 @@ plt.title('loss vs epoch')
 plt.ylabel('loss')
 plt.xlabel('epoch')
 plt.legend(['train', 'validation'], loc='upper left')
-plt.savefig("A03mpm514Q3.png")
+plt.show()
+#plt.savefig("A03mpm514Q3.png")
 plt.clf()
 
 
